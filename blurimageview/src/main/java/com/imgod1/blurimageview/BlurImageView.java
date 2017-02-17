@@ -11,18 +11,18 @@ import android.util.Log;
 import android.widget.ImageView;
 
 /**
- * 项目名称：TestCustomView
- * 类描述：高斯模糊的ImageView
- * 创建人：imgod1
- * 创建时间：2017/2/16 14:03
- * 修改人：imgod1
- * 修改时间：2017/2/16 14:03
- * 修改备注：
+ * project name:TestCustomView
+ * class desc:Blur ImageView
+ * author:imgod1
+ * create time:2017/2/16 14:03
+ * edit author:imgod1
+ * edit time:2017/2/16 14:03
+ * eidt desc:
  */
 public class BlurImageView extends ImageView {
     private boolean isBlurMode = false;
-    private Bitmap realBitmap;//真实bitmap
-    private Bitmap blurBitmap;//模糊后的bitmap
+    private Bitmap realBitmap;
+    private Bitmap blurBitmap;
 
     public BlurImageView(Context context) {
         this(context, null);
@@ -39,14 +39,14 @@ public class BlurImageView extends ImageView {
 
 
     /**
-     * 模糊
+     * show blur
      */
     public void showBlur() {
         isBlurMode = true;
-        if (null != blurBitmap) {//如果已经有了模糊好的Bitmap
+        if (null != blurBitmap) {
             setImageBitmap(blurBitmap, false);
-        } else {//如果没有
-            if (null == realBitmap) {//如果有真实Bitmap,那就去模糊
+        } else {
+            if (null == realBitmap) {
                 realBitmap = getBitmapFromDrawable();
             }
             new BlurTask().execute(realBitmap);
@@ -54,20 +54,20 @@ public class BlurImageView extends ImageView {
     }
 
     /**
-     * 正常
+     * show normal
      */
     public void showNormal() {
         isBlurMode = false;
         if (null != realBitmap) {
             setImageBitmap(realBitmap, false);
         } else {
-            Log.e("test", "设置真实的Bitmap 空了");
+            Log.e("test", "real bitmap null");
         }
 
     }
 
     /**
-     * 从原始Bitmap中得到一个模糊的Bitmap
+     * get a blur bitmap from old bitmap
      */
     private class BlurTask extends AsyncTask<Bitmap, Void, Bitmap> {
         @Override
@@ -86,7 +86,7 @@ public class BlurImageView extends ImageView {
     }
 
     /**
-     * 清空Bitmap,用户重新设置了显示的资源
+     * reset bitmap to null
      */
     private void resetBitmap() {
         realBitmap = null;
@@ -102,7 +102,7 @@ public class BlurImageView extends ImageView {
     }
 
     /**
-     * 重置并更新
+     * reset and update
      */
     private void resetBitmapAndUpdate() {
         isBlurMode = false;
@@ -111,8 +111,6 @@ public class BlurImageView extends ImageView {
     }
 
     /**
-     * 从原来的Drawable里面拿到Bitmap
-     *
      * @return bitmap
      */
     private Bitmap getBitmapFromDrawable() {

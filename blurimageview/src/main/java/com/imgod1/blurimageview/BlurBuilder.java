@@ -19,10 +19,10 @@ public class BlurBuilder {
     }
 
     /**
-     * @param bitmap 位图
-     * @param level  0-100 数字越大模糊的越很,一般为8
-     * @param scale  缩放
-     * @return 模糊后的bitmap
+     * @param bitmap bitmap to blur
+     * @param level  0-100
+     * @param scale  isscale
+     * @return blured bitmap
      */
     public static Bitmap blur(Bitmap bitmap, int level, int scale) {
         return blur(bitmap, level, scale, false);
